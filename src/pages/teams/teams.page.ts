@@ -1,6 +1,6 @@
 import {NavController} from "ionic-angular";
 import {Component} from "@angular/core";
-import {TeamDetailPage} from "../team-detail/team-detail.page";
+import {TeamHomePage} from "../team-home/team-home.page";
 /**
  * Created by meryanyels on 2/03/17.
  */
@@ -21,6 +21,6 @@ export class TeamsPage {
   }
 
   itemTapped($event, team){
-    this.nav.push(TeamDetailPage, team);
+    this.nav.push(TeamHomePage, team);
   }
 }
