@@ -1,6 +1,6 @@
 import {NavController} from "ionic-angular";
 import {Component} from "@angular/core";
-import {MyTeamsPage} from "../my-teams/my-teams.page";
+import {TeamsPage} from "../teams/teams.page";
 /**
  * Created by mavillalba on 2/03/17.
  */
@@ -9,11 +9,11 @@ import {MyTeamsPage} from "../my-teams/my-teams.page";
   templateUrl: 'tournaments.page.html'
 })
 export class TournamentsPage {
-  constructor(private navCtrl: NavController){
+  constructor(private nav: NavController){
 
   }
 
-  navigate(){
-    this.navCtrl.push(MyTeamsPage);
+  itemTapped(){
+    this.nav.push(TeamsPage);
   }
 }

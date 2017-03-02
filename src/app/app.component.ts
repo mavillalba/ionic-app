@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Platform, NavController} from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
+import {MyTeamsPage} from "../pages/my-teams/my-teams.page";
+import {TournamentsPage} from "../pages/tournaments/tournaments.page";
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(NavController) nav: NavController
   rootPage = TabsPage;
 
   constructor(platform: Platform) {
@@ -18,5 +21,13 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
     });
+  }
+
+  goHome(){
+    this.nav.push(MyTeamsPage);
+  }
+
+  goToTournaments(){
+    this.nav.push(TournamentsPage);
   }
 }
