@@ -18,15 +18,23 @@ export class TeamDetailPage{
   games: any[];
   teamStanding: any;
   private tourneyData: any;
+  useDateFilter = false;
 
   constructor(private nav: NavController,
               private navParams: NavParams,
               public eliteApi: EliteApi){
-  }
-
-  ionViewDidLoad() {
     this.team = this.navParams.data;
     this.tourneyData = this.eliteApi.getCurrentTourney();
+    this.teamStanding = _.find(this.tourneyData.standings, {'teamId': this.team.id});
+    console.log('**nav params:', this.navParams)
+    console.log('**tourneyData:', this.tourneyData);
+    console.log('**teamStanding:', this.teamStanding);
+  }
+
+
+  ionViewDidLoad() {
+    //this.team = this.navParams.data;
+    //this.tourneyData = this.eliteApi.getCurrentTourney();
     this.games = _.chain(this.tourneyData.games)
       .filter(g => g.team1Id === this.team.id || g.team2Id === this.team.id)
       .map(g => {
@@ -45,7 +53,7 @@ export class TeamDetailPage{
       })
       .value();
     this.allGames = this.games;
-    this.teamStanding = _.find(this.tourneyData.standings, {'teamId': this.team.id});
+    //this.teamStanding = _.find(this.tourneyData.standings, {'teamId': this.team.id});
   }
 
   getScoreDisplay(isTeam1, team1Score, team2Score) {
@@ -66,12 +74,18 @@ export class TeamDetailPage{
   }
 
   dateChanged(){
-    this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));
+    if(this.useDateFilter) {
+      this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));
+    }else {
+      this.games = this.allGames;
+    }
   }
-  //goHome(){
-    //this.nav.push(MyTeamsPage);
-    //this.nav.popToRoot();
-  /*  console.log('**parent', this.nav.parent);
-    this.nav.parent.parent.popToRoot();
-  }*/
+
+  getScoreWorL(game){
+    return game.scoreDisplay ? game.scoreDisplay[0] : '';
+  }
+
+  getScoreDisplayBadgeClass(game){
+    return game.scoreDisplay.indexOf('W:') === 0 ? 'primary' : 'danger';
+  }
 }

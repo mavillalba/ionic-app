@@ -22,7 +22,7 @@ export class StandingsPage {
   }
 
   ionViewDidLoad(){
-    this.team = this.navParams.data;
+    //this.team = this.navParams.data;
     let tourneyData = this.eliteApi.getCurrentTourney();
     this.standings = tourneyData.standings;
 
