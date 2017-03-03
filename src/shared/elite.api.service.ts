@@ -30,4 +30,8 @@ export class EliteApi {
         return this.currentTourney;
       });
   }
+
+  getCurrentTourney(){
+    return this.currentTourney;
+  }
 }
