@@ -10,6 +10,7 @@ import {StandingsPage} from "../pages/standings/standings.page";
 import {TabsPage} from "../pages/tabs/tabs";
 import {HttpModule} from "@angular/http";
 import {EliteApi} from "../shared/elite.api.service";
+import {GamePage} from "../pages/game/game.page";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {EliteApi} from "../shared/elite.api.service";
     TeamDetailPage,
     TeamHomePage,
     StandingsPage,
-    TabsPage
+    TabsPage,
+    GamePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -34,7 +36,8 @@ import {EliteApi} from "../shared/elite.api.service";
     TeamDetailPage,
     TeamHomePage,
     StandingsPage,
-    TabsPage
+    TabsPage,
+    GamePage
   ],
   providers: [EliteApi, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

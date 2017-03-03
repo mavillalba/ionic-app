@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Platform, NavController} from 'ionic-angular';
+import {Platform, Nav} from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import {MyTeamsPage} from "../pages/my-teams/my-teams.page";
@@ -10,7 +10,7 @@ import {TournamentsPage} from "../pages/tournaments/tournaments.page";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(NavController) nav: NavController
+  @ViewChild(Nav) nav: Nav;
   rootPage = MyTeamsPage;
 
   constructor(platform: Platform) {
