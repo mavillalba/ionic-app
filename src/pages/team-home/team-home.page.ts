@@ -1,7 +1,5 @@
-import {NavController} from "ionic-angular";
+import {NavController, NavParams} from "ionic-angular";
 import {Component} from "@angular/core";
-import {TeamDetailPage} from "../team-detail/team-detail.page";
-import {StandingsPage} from "../standings/standings.page";
 /**
  * Created by meryanyels on 2/03/17.
  */
@@ -10,9 +8,14 @@ import {StandingsPage} from "../standings/standings.page";
   templateUrl: 'team-home.page.html'
 })
 export  class TeamHomePage {
+  team: any;
 
-  constructor(private nav: NavController){
-
+  constructor(private nav: NavController, private navParams: NavParams){
+    this.team = this.navParams.data;
   }
 
+  goHome(){
+    //this.nav.push(MyTeamsPage);
+    this.nav.popToRoot();
+  }
 }

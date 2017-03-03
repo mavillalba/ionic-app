@@ -14,4 +14,11 @@ export class TeamDetailPage{
     this.team = this.navParams.data;
     console.log('**nav params:', this.navParams);
   }
+
+  //goHome(){
+    //this.nav.push(MyTeamsPage);
+    //this.nav.popToRoot();
+  /*  console.log('**parent', this.nav.parent);
+    this.nav.parent.parent.popToRoot();
+  }*/
 }
