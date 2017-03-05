@@ -11,6 +11,8 @@ import {TabsPage} from "../pages/tabs/tabs";
 import {HttpModule} from "@angular/http";
 import {EliteApi} from "../shared/elite.api.service";
 import {GamePage} from "../pages/game/game.page";
+import {UserSettings} from "../shared/user-settings.service";
+import { Storage } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,6 @@ import {GamePage} from "../pages/game/game.page";
     TabsPage,
     GamePage
   ],
-  providers: [EliteApi, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [EliteApi, Storage, UserSettings, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

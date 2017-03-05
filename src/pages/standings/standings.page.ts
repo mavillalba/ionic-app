@@ -11,6 +11,7 @@ import * as _ from 'lodash';
 })
 export class StandingsPage {
   allStandings: any[];
+  divisionFilter = 'division';
   standings: any[];
   team: any;
 
@@ -26,13 +27,31 @@ export class StandingsPage {
     let tourneyData = this.eliteApi.getCurrentTourney();
     this.standings = tourneyData.standings;
 
-    this.allStandings = _.chain(this.standings)
+    /*this.allStandings = _.chain(this.standings)
       .groupBy('division')
       .toPairs()
       .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
-      .value();
+      .value();*/
 
     console.log('standings', this.standings);
-    console.log('division Standings', this.allStandings);
+    //console.log('division Standings', this.allStandings);
+    this.allStandings = tourneyData.standings;
+
+    this.filterDivision();
+  }
+
+  filterDivision(){
+    if(this.divisionFilter === 'all'){
+      this.standings = this.allStandings;
+    } else {
+      this.standings = _.filter(this.allStandings, s => s.division === this.team.division);
+    }
+  }
+
+  getHeader(record, recordIndex, records){
+    if (recordIndex === 0 || record.division !== records[recordIndex-1].division) {
+      return record.division;
+    }
+    return null;
   }
 }
