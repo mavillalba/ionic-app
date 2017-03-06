@@ -13,6 +13,8 @@ import {EliteApi} from "../shared/elite.api.service";
 import {GamePage} from "../pages/game/game.page";
 import {UserSettings} from "../shared/user-settings.service";
 import { Storage } from '@ionic/storage';
+import {MapPage} from "../pages/map/map.page";
+import {AgmCoreModule} from "angular2-google-maps/core";
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { Storage } from '@ionic/storage';
     TeamHomePage,
     StandingsPage,
     TabsPage,
-    GamePage
+    GamePage,
+    MapPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBbsOlMryAHu2ESwHHSwrDBIUU7fiENNoM'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +43,8 @@ import { Storage } from '@ionic/storage';
     TeamHomePage,
     StandingsPage,
     TabsPage,
-    GamePage
+    GamePage,
+    MapPage
   ],
   providers: [EliteApi, Storage, UserSettings, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
